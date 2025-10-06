@@ -1,0 +1,1 @@
+options.add_argument("--headless=new") 
