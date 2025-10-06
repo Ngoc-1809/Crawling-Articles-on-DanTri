@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 import undetected_chromedriver as uc
 from docx import Document
 
-# 🧩 HÀM KHỞI TẠO DRIVER (CHẾ ĐỘ STEALTH)
+# HÀM KHỞI TẠO DRIVER (CHẾ ĐỘ STEALTH)
 def create_driver():
     options = uc.ChromeOptions()
     options.add_argument("--headless=new")  # bỏ nếu muốn thấy trình duyệt
@@ -25,7 +25,7 @@ def create_driver():
     return driver
 
 
-# 🧠 LẤY DANH SÁCH LINK CÁC BÀI TRONG TRANG (có fallback selector)
+# LẤY DANH SÁCH LINK CÁC BÀI TRONG TRANG (có fallback selector)
 def get_article_links(driver, url):
     driver.get(url)
     time.sleep(2)
@@ -56,7 +56,7 @@ def get_article_links(driver, url):
     return links
 
 
-# 🧠 LẤY NỘI DUNG TỪ MỘT LINK
+# LẤY NỘI DUNG TỪ MỘT LINK
 def get_article_content(driver, url):
     try:
         driver.get(url)
@@ -83,7 +83,7 @@ def get_article_content(driver, url):
         return None
 
 
-# 💾 LƯU VÀO WORD (THÊM DẦN VÀO FILE ĐÃ TỒN TẠI)
+# LƯU VÀO WORD (THÊM DẦN VÀO FILE ĐÃ TỒN TẠI)
 def save_to_word(articles, file_path=r"F:\KPDL_HLV\Final.docx"):
     if not os.path.exists(file_path):
         doc = Document()
@@ -105,7 +105,7 @@ def save_to_word(articles, file_path=r"F:\KPDL_HLV\Final.docx"):
     print(f"💾 Đã thêm {len(articles)} bài vào {file_path}")
 
 
-# 🚀 MAIN (crawl tuần tự trang 1 -> 6, dùng đúng đường dẫn /trang-X.htm)
+# MAIN (crawl tuần tự trang 1 -> 6, dùng đúng đường dẫn /trang-X.htm)
 def main():
     base_url = "https://dantri.com.vn/thoi-su/nong-tren-mang"  # không có .htm ở đây để dễ ghép
     driver = create_driver()
